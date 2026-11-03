@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julian Raditya Portofolio</title>
+  <meta name="description" content="Portfolio of Julian Raditya" />
+  <meta property="og:title" content="Julian Raditya — STUDENTS TKJ &amp; INFORMATICS" />
+  <meta property="og:description" content="Portfolio of Julian Khasiib Raditya" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Plus Jakarta Sans (Clean geometric body & display) & Space Grotesk (Tech mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Theme Initializer (prevents flash of incorrect theme) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            comic: ['"Plus Jakarta Sans"', 'sans-serif'], // Remapped to clean, high-impact sans-serif
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'brutal-xs': '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+            'brutal-sm': '0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06)',
+            'brutal': '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+            'brutal-md': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04)',
+            'brutal-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+            'brutal-xl': '0 25px 50px -12px rgba(0, 0, 0, 0.12)',
+            'brutal-white': '0 4px 14px 0 rgba(255, 255, 255, 0.08)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Clean, Simple & Modern Styling System -->
+  <style>
+    /* Subtle Modern Dot Texture */
+    .halftone-bg, .halftone-subtle {
+      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .grid-lines-bg {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .diagonal-stripes, .diagonal-stripes-sm {
+      display: none !important;
+    }
+
+    /* Disable Comic Speech Bubble Tails */
+    .bubble-tail-bottom::after,
+    .bubble-tail-bottom::before {
+      display: none !important;
+    }
+
+    /* Modern Minimalist Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.32);
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Soft Modern Borders & Rounded Radii across components */
+    .border-4, .border-3 {
+      border-width: 1px !important;
+    }
+    .border-2 {
+      border-width: 1px !important;
+    }
+    .border-b-4 {
+      border-bottom-width: 1px !important;
+    }
+    .border-t-4 {
+      border-top-width: 1px !important;
+    }
+    .border-l-4 {
+      border-left-width: 2px !important;
+    }
+
+    /* Modern hairline border color in light mode */
+    .border-black {
+      border-color: #e5e7eb !important;
+    }
+    .border-black\/10,
+    .border-black\/15,
+    .border-black\/20 {
+      border-color: #f3f4f6 !important;
+    }
+
+    /* Modern card rounding & elevation */
+    .project-card,
+    #avatarCard,
+    .skill-group-card,
+    #education .group > div:last-child,
+    #projectModalCard,
+    #resumeModalCard,
+    #certModalCard {
+      border-radius: 16px !important;
+    }
+    .skill-badge-item,
+    button:not(.rounded-full),
+    a.nav-link {
+      border-radius: 8px !important;
+    }
+
+    /* Clean Card Hover Lift */
+    #avatarCard, .project-card, .skill-group-card {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+      will-change: transform, box-shadow;
+    }
+    #avatarCard:hover, .project-card:hover, .skill-group-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+      border-color: #d1d5db !important;
+    }
+    #avatarCard:active {
+      transform: translateY(-1px) scale(0.99) !important;
+    }
+
+    /* Status dot pulse */
+    @keyframes statusDotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+    .status-dot-pulse {
+      animation: statusDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Scroll Progress Bar */
+    #scrollProgressBar {
+      transform-origin: left;
+      transform: scaleX(0);
+      will-change: transform;
+      transition: transform 0.08s linear;
+    }
+
+    /* Smooth Scroll Reveals */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .scroll-reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .scroll-reveal-scale, .scroll-reveal-comic {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-reveal-scale.revealed, .scroll-reveal-comic.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger Delays */
+    .delay-75 { transition-delay: 75ms; }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-150 { transition-delay: 150ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-225 { transition-delay: 225ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-350 { transition-delay: 350ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-450 { transition-delay: 450ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* Post-Loading Hero Entrance Animation */
+    .hero-entrance-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(4px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                  filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    /* Dedicated prominent entrance animation for Hero Title H1 */
+    .hero-title-entrance {
+      opacity: 0;
+      transform: translateY(38px) scale(0.97);
+      filter: blur(8px);
+      transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
+                  filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    body.page-loaded .hero-entrance-fade {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    body.page-loaded .hero-title-entrance {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Continuous Seamless Swaying (Bergoyang Tanpa Jeda) for Avatar Card */
+    @keyframes avatarCardSway {
+      0% {
+        transform: rotate(-2.2deg) translate3d(-3px, -2px, 0);
+      }
+      50% {
+        transform: rotate(2.2deg) translate3d(3px, -2px, 0);
+      }
+      100% {
+        transform: rotate(-2.2deg) translate3d(-3px, -2px, 0);
+      }
+    }
+
+    #avatarCard {
+      transform-origin: 50% 12%;
+      animation: avatarCardSway 3s ease-in-out infinite;
+    }
+
+    .hero-delay-badge { transition-delay: 150ms; }
+    .hero-delay-title { transition-delay: 380ms; }
+    .hero-delay-desc { transition-delay: 520ms; }
+    .hero-delay-cta { transition-delay: 660ms; }
+    .hero-delay-card { transition-delay: 480ms; }
+
+    html {
+      scroll-padding-top: 5.5rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .scroll-reveal-comic, .hero-entrance-fade, .hero-title-entrance, #avatarCard {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+      #scrollProgressBar {
+        display: none !important;
+      }
+    }
+
+    /* Accessible focus rings */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid #000000;
+      outline-offset: 2px;
+    }
+
+    /* ========================================== */
+    /* CLEAN MODERN DARK MODE                     */
+    /* ========================================== */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #09090b !important;
+      color: #f4f4f5 !important;
+    }
+    header {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-bottom-width: 1px !important;
+      border-bottom-color: rgba(229, 231, 235, 0.8) !important;
+    }
+    header > div:first-child {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    html.dark header {
+      background-color: rgba(9, 9, 11, 0.8) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-bottom-color: #27272a !important;
+    }
+    html.dark #mobileMenu {
+      background-color: #121215 !important;
+      border-color: #27272a !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
+    }
+    html.dark #scrollProgressBar {
+      background-color: #f4f4f5 !important;
+    }
+    html.dark section {
+      background-color: #09090b !important;
+      border-color: #27272a !important;
+    }
+    html.dark section.bg-neutral-50,
+    html.dark section.bg-white {
+      background-color: #09090b !important;
+    }
+    html.dark section#projects,
+    html.dark section#education,
+    html.dark section#contact {
+      background-color: #0e0e11 !important;
+    }
+    html.dark footer {
+      background-color: #050507 !important;
+      border-color: #27272a !important;
+    }
+
+    /* Invert cards, containers, panels */
+    html.dark .bg-white {
+      background-color: #121215 !important;
+      color: #f4f4f5 !important;
+    }
+    html.dark .bg-neutral-50 {
+      background-color: #16161a !important;
+      color: #f4f4f5 !important;
+    }
+    html.dark .bg-neutral-100 {
+      background-color: #1f1f23 !important;
+      color: #f4f4f5 !important;
+    }
+
+    /* Modern dark borders */
+    html.dark .border-black {
+      border-color: #27272a !important;
+    }
+    html.dark .border-black\/10,
+    html.dark .border-black\/15,
+    html.dark .border-black\/20 {
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    html.dark .border-black\/40 {
+      border-color: rgba(255, 255, 255, 0.16) !important;
+    }
+
+    /* Invert typography */
+    html.dark .text-black {
+      color: #f4f4f5 !important;
+    }
+    html.dark .text-black\/90,
+    html.dark .text-black\/80,
+    html.dark .text-black\/70 {
+      color: #a1a1aa !important;
+    }
+    html.dark .text-black\/60 {
+      color: #71717a !important;
+    }
+    html.dark .text-black\/40 {
+      color: #52525b !important;
+    }
+
+    /* Soft diffuse shadows in Dark Mode */
+    html.dark .shadow-brutal-sm,
+    html.dark .shadow-brutal,
+    html.dark .shadow-brutal-md,
+    html.dark .shadow-brutal-lg,
+    html.dark .shadow-brutal-xl {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6) !important;
+    }
+    html.dark #avatarCard:hover,
+    html.dark .project-card:hover,
+    html.dark .skill-group-card:hover {
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8) !important;
+      border-color: #3f3f46 !important;
+    }
+
+    /* Buttons in Dark Mode */
+    html.dark a.bg-black,
+    html.dark button.bg-black:not(#themeToggleBtn):not(#soundToggleBtn) {
+      background-color: #f4f4f5 !important;
+      color: #09090b !important;
+      border-color: #f4f4f5 !important;
+    }
+    html.dark a.bg-black:hover,
+    html.dark button.bg-black:hover:not(#themeToggleBtn):not(#soundToggleBtn) {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    /* Form inputs and controls */
+    html.dark input,
+    html.dark textarea,
+    html.dark select {
+      background-color: #16161a !important;
+      color: #f4f4f5 !important;
+      border-color: #27272a !important;
+    }
+    html.dark input::placeholder,
+    html.dark textarea::placeholder {
+      color: #71717a !important;
+    }
+
+    /* Halftone Textures in Dark Mode */
+    html.dark .halftone-bg, html.dark .halftone-subtle {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+    }
+
+    /* Modals in Dark Mode */
+    html.dark #projectModalCard,
+    html.dark #resumeModalCard,
+    html.dark #certModalCard {
+      background-color: #121215 !important;
+      color: #f4f4f5 !important;
+      border-color: #27272a !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Focus rings in Dark Mode */
+    html.dark a:focus-visible,
+    html.dark button:focus-visible,
+    html.dark input:focus-visible,
+    html.dark textarea:focus-visible,
+    html.dark select:focus-visible {
+      outline: 2px solid #ffffff !important;
+    }
+
+    /* Simple Clean Preloader Slide-Up Curtain Animation */
+    #sitePreloader {
+      transform: translateY(0);
+      transition: transform 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    #sitePreloader.preloader-hidden {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+    #sitePreloader .preloader-content {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      will-change: transform, opacity;
+    }
+    #sitePreloader.preloader-hidden .preloader-content {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+
+    html.dark #sitePreloader {
+      background-color: #0c0c0e !important;
+      color: #f4f4f5 !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+    html.dark #sitePreloader .border-neutral-200 {
+      border-color: #27272a !important;
+    }
+    html.dark #sitePreloader .border-t-neutral-900 {
+      border-top-color: #f4f4f5 !important;
+    }
+    html.dark #sitePreloader .text-neutral-800 {
+      color: #f4f4f5 !important;
+    }
+    html.dark #sitePreloader .bg-neutral-100 {
+      background-color: #27272a !important;
+    }
+    html.dark #sitePreloader .bg-neutral-900 {
+      background-color: #f4f4f5 !important;
+    }
+    html.dark #sitePreloader .text-neutral-500 {
+      color: #a1a1aa !important;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-black font-sans antialiased selection:bg-black selection:text-white relative min-h-screen">
+
+  <!-- ========================================== -->
+  <!-- PRELOADER: SIMPLE MINIMALIST LOADER        -->
+  <!-- ========================================== -->
+  <div id="sitePreloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white select-none overflow-hidden" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="preloader-content flex flex-col items-center gap-4 text-center px-4">
+      <!-- Minimalist Spinner -->
+      <div class="w-10 h-10 border-3 border-neutral-200 border-t-neutral-900 rounded-full animate-spin" aria-hidden="true"></div>
+
+      <!-- Clean Minimal Text & Progress -->
+      <div class="flex flex-col items-center gap-1.5">
+        <p class="font-sans text-sm font-semibold tracking-wider text-neutral-800 uppercase">
+          Loading
+        </p>
+        <div class="w-44 h-1 bg-neutral-100 rounded-full overflow-hidden mt-1">
+          <div
+            id="preloaderProgressBar"
+            class="h-full bg-neutral-900 transition-all duration-100 ease-out"
+            style="width: 0%;"
+          ></div>
+        </div>
+        <span id="preloaderPercentage" class="font-mono text-xs text-neutral-500 mt-0.5">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SECTION: HEADER & NAVIGATION               -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 backdrop-blur-md">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand / Wordmark -->
+        <a href="#hero" class="flex items-center gap-3 group focus:outline-none" aria-label="Alex Carter Home">
+          <!-- Standalone Custom Logo (Tanpa Komponen Kontainer) -->
+          <img
+            id="siteBrandLogo"
+            src="/foto/logosmk2.jpeg"
+            alt="Logo Brand"
+            class="w-10 h-10 object-contain select-none transition-transform duration-200 group-hover:scale-105 cursor-pointer"
+            title="Klik untuk ubah menggunakan logo buatan sendiri"
+          />
+          <input type="file" id="brandLogoUploadInput" accept="image/*" class="hidden" aria-label="Unggah logo buatan sendiri" />
+          <div class="flex flex-col">
+            <span class="font-sans font-extrabold text-xl tracking-tight leading-tight text-neutral-900 dark:text-white">
+              JULIAN KHASIIB R
+            </span>
+            <span class="font-mono text-[11px] font-medium tracking-wider text-neutral-500 dark:text-neutral-400">
+              MURID INFORMATIKA
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-sans text-sm font-semibold tracking-normal" aria-label="Primary Navigation">
+          <a href="#hero" class="nav-link py-1 text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-section="hero">
+            Home
+          </a>
+          <a href="#projects" class="nav-link py-1 text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-section="projects">
+            Projects
+          </a>
+          <a href="#skills" class="nav-link py-1 text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-section="skills">
+            Skills
+          </a>
+          <a href="#education" class="nav-link py-1 text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-section="education">
+            Education
+          </a>
+          <a href="#certificates" class="nav-link py-1 text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-section="certificates">
+            Certifications
+          </a>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="hidden md:flex items-center gap-3">
+          <!-- Theme Toggle Button (Light / Dark Mode) -->
+          <button id="themeToggleBtn" type="button" aria-label="Toggle dark / light mode" title="Ganti Mode Gelap / Terang" class="p-2.5 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-sm transition-all flex items-center justify-center cursor-pointer">
+            <span id="themeIcon" class="text-base select-none">🌙</span>
+          </button>
+
+          <!-- Hidden Sound Button (kept for script compatibility) -->
+          <button id="soundToggleBtn" type="button" class="hidden" aria-hidden="true"><span id="soundIcon">🔇</span></button>
+
+          <!-- Contact CTA Button -->
+          <a href="#contact" class="px-5 py-2.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-sans text-sm font-semibold tracking-normal rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all whitespace-nowrap">
+            Let's Connect →
+          </a>
+        </div>
+
+        <!-- Mobile Header Controls -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button id="mobileThemeToggleBtn" type="button" aria-label="Toggle dark / light mode" class="p-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <span id="mobileThemeIcon" class="text-sm select-none">🌙</span>
+          </button>
+
+          <button id="mobileSoundToggleBtn" type="button" class="hidden" aria-hidden="true"><span id="mobileSoundIcon">🔇</span></button>
+          
+          <button id="menuToggleBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open main menu" class="p-2.5 bg-neutral-100 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 focus:outline-none cursor-pointer">
+            <div class="w-5 h-4 flex flex-col justify-between items-center relative">
+              <span id="bar1" class="w-full h-0.5 bg-neutral-800 dark:bg-neutral-200 rounded-full transition-all duration-300 origin-center"></span>
+              <span id="bar2" class="w-full h-0.5 bg-neutral-800 dark:bg-neutral-200 rounded-full transition-all duration-300"></span>
+              <span id="bar3" class="w-full h-0.5 bg-neutral-800 dark:bg-neutral-200 rounded-full transition-all duration-300 origin-center"></span>
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 px-4 pt-4 pb-6 shadow-xl transition-all duration-300" aria-label="Mobile Navigation">
+      <nav class="flex flex-col space-y-2 font-sans font-medium text-sm">
+        <a href="#hero" class="mobile-nav-link p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+          Home
+        </a>
+        <a href="#projects" class="mobile-nav-link p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+          Featured Projects
+        </a>
+        <a href="#skills" class="mobile-nav-link p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+          Skills &amp; Technologies
+        </a>
+        <a href="#education" class="mobile-nav-link p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+          Education &amp; Background
+        </a>
+        <a href="#certificates" class="mobile-nav-link p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+          Certifications
+        </a>
+        <a href="#contact" class="mobile-nav-link p-3 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition-colors text-center font-semibold">
+          Contact Me →
+        </a>
+      </nav>
+
+      <!-- Mobile Theme Quick Switch Row -->
+      <div class="pt-4 mt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between font-mono text-xs font-semibold">
+        <span class="text-neutral-500 dark:text-neutral-400">THEME:</span>
+        <button id="mobileMenuThemeBtn" type="button" class="px-3 py-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 flex items-center gap-1.5 active:translate-y-0.5 transition-all cursor-pointer">
+          <span id="mobileMenuThemeIcon">🌙</span>
+          <span id="mobileMenuThemeText">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Indicator Bar -->
+    <div class="w-full bg-neutral-200/50 dark:bg-neutral-800 h-1 overflow-hidden relative" aria-hidden="true">
+      <div id="scrollProgressBar" class="h-full bg-neutral-900 dark:bg-white w-full origin-left scale-x-0"></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================== -->
+    <!-- SECTION: HERO SECTION                      -->
+    <!-- ========================================== -->
+    <section id="hero" class="relative pt-12 pb-16 md:pt-20 md:pb-24 border-b border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-[#09090b]">
+      <!-- Subtle dot grid pattern backdrop -->
+      <div class="absolute right-0 top-0 w-80 h-80 halftone-subtle opacity-40 pointer-events-none hidden lg:block" aria-hidden="true"></div>
+      <div class="absolute left-0 bottom-0 w-64 h-64 grid-lines-bg opacity-30 pointer-events-none hidden lg:block" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Status Badge -->
+        <div class="hero-entrance-fade hero-delay-badge inline-flex items-center gap-2 px-3.5 py-1.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-mono text-xs font-semibold uppercase tracking-wider rounded-full border border-neutral-200 dark:border-neutral-700 mb-6 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>SMK NEGERI 3 JEPARA</span>
+          <span aria-hidden="true" class="text-neutral-400">·</span>
+          <span class="text-neutral-500 dark:text-neutral-400">STUDENTS TKJ</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Hero Left Column: Clean Typography & CTAs -->
+          <div class="lg:col-span-7 flex flex-col items-start">
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title-entrance hero-delay-title font-sans font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6">
+              Hi, I'm <span class="bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-3 py-0.5 rounded-xl inline-block shadow-sm">JULIAN RADITYA</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-entrance-fade hero-delay-desc text-lg sm:text-xl font-normal text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-8">
+              An informatics student who aspires to create <b>Modern</b> projects, become a <b>Web Developer</b>, as well a prepared to enter the <b>Professional</b> workforce and <b>Drive meaningful change for the future</b>
+            </p>
+
+            <!-- Call-To-Action Buttons -->
+            <div class="hero-entrance-fade hero-delay-cta flex flex-wrap items-center gap-4 w-full sm:w-auto">
+              <!-- Primary CTA -->
+              <a href="#projects" class="w-full sm:w-auto text-center px-7 py-3.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-sans text-sm font-semibold tracking-normal rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                Explore Projects ↓
+              </a>
+
+              <!-- Secondary CTA -->
+              <a href="#contact" class="w-full sm:w-auto text-center px-7 py-3.5 bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white font-sans text-sm font-semibold tracking-normal rounded-xl border border-neutral-300 dark:border-neutral-700 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                Contact Me →
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Hero Right Column: Interactive Profile Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div id="avatarCard" class="hero-entrance-fade hero-delay-card relative w-full max-w-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-md rounded-2xl p-6 group transition-all duration-300 select-none cursor-pointer hover:shadow-xl hover:-translate-y-1">
+              
+              <!-- Top Header Strip on Card -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-neutral-100 dark:border-neutral-800 font-mono text-xs">
+                <span class="flex items-center gap-2 font-medium text-neutral-700 dark:text-neutral-300">
+                  <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full inline-block status-dot-pulse"></span>
+                  <span>Active &amp; Ready to Deploy</span>
+                </span>
+                <span class="text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 tracking-wide uppercase">
+                  Profile Overview
+                </span>
+              </div>
+
+              <!-- Photo Container -->
+              <div class="relative w-full aspect-square rounded-xl overflow-hidden group/photo bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/80">
+                
+                <!-- Profile Photo Image -->
+                <img
+                  id="profilePhotoImg"
+                  src="/foto/fotoiyan.jpeg"
+                  alt="Foto Profil Developer"
+                  class="w-full h-full object-cover object-center transition-all duration-500 ease-out group-hover/photo:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+
+                <div id="photoHalftoneOverlay" class="hidden"></div>
+
+                <!-- Verified Badge -->
+                <div class="stamp-badge absolute bottom-3 right-3 bg-neutral-900/90 dark:bg-white/90 backdrop-blur-sm text-white dark:text-neutral-900 px-3 py-1 rounded-full border border-neutral-700/30 dark:border-neutral-200 text-xs font-semibold z-10 flex items-center gap-1.5 shadow-sm">
+                  <span class="text-emerald-400 dark:text-emerald-600 font-bold">✓</span>
+                  <span>Verified Engineer</span>
+                </div>
+
+              </div>
+
+              <!-- Card Bio & Socials Strip -->
+              <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex flex-col gap-3">
+                
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="font-sans font-bold text-xl text-neutral-900 dark:text-white tracking-tight">Yan Raditya</h2>
+                    <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Full-Stack Engineer</p>
+                  </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="p-2.5 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl border border-neutral-200/70 dark:border-neutral-700/70 flex items-center justify-between gap-1.5 text-xs">
+                  <span class="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 pl-1 hidden sm:inline">
+                    Connect:
+                  </span>
+                  <div class="flex items-center justify-around sm:justify-end gap-2 w-full sm:w-auto">
+                    <!-- GitHub Link -->
+                    <a
+                      href="https://github.com/yanyeager"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub Profile"
+                      title="Buka GitHub"
+                      class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow transition-all text-xs font-medium"
+                    >
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+
+                    <!-- Instagram Link -->
+                    <a
+                      href="https://instagram.com/yanradty_"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram Profile"
+                      title="Buka Instagram"
+                      class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow transition-all text-xs font-medium"
+                    >
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                      <span>Instagram</span>
+                    </a>
+
+                    <!-- LinkedIn Link -->
+                    <a
+                      href="https://www.linkedin.com/in/yanz-serfort-b83946444?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn Profile"
+                      title="Buka LinkedIn"
+                      class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow transition-all text-xs font-medium"
+                    >
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Metric Proof Strip -->
+        <div class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center max-w-5xl mx-auto">
+          <div class="scroll-reveal scroll-reveal-scale delay-75 p-5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+            <div class="font-sans font-extrabold text-3xl sm:text-4xl text-neutral-900 dark:text-white tracking-tight">4+</div>
+            <div class="font-sans text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1">Code & Stack Learned</div>
+          </div>
+          <div class="scroll-reveal scroll-reveal-scale delay-150 p-5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+            <div class="font-sans font-extrabold text-3xl sm:text-4xl text-neutral-900 dark:text-white tracking-tight">2+</div>
+            <div class="font-sans text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1">Projects</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION: PROJECTS SECTION                  -->
+    <!-- ========================================== -->
+    <section id="projects" class="py-16 md:py-24 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-[#0c0c0f] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div class="scroll-reveal scroll-reveal-left">
+            <h2 class="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-neutral-900 dark:text-white leading-tight">
+              Featured Projects
+            </h2>
+            <p class="font-sans text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl">
+              Kumpulan proyek yang sudah dipusblish dan digunakan
+            </p>
+          </div>
+
+          <!-- Interactive Category Filter Tabs -->
+          <div class="scroll-reveal scroll-reveal-right delay-100 flex flex-wrap items-center gap-1.5 p-1 bg-neutral-100 dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700" role="tablist" aria-label="Filter Projects">
+            <button type="button" class="project-filter-btn px-4 py-2 font-sans text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm transition-all" data-filter="all" role="tab" aria-selected="true">
+              All (1)
+            </button>
+            <button type="button" class="project-filter-btn px-4 py-2 font-sans text-xs font-semibold rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all" data-filter="fullstack" role="tab" aria-selected="false">
+              Web
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- PROJECT CARD 1: CanvasCollab -->
+          <article class="scroll-reveal scroll-reveal-scale delay-75 project-card bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden" data-category="fullstack" data-id="p1">
+            <div>
+              <!-- Visual Art Header -->
+              <div class="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-800 overflow-hidden group/thumb">
+                <img
+                  id="projectPhoto1"
+                  src="foto/ss2.png"
+                  alt="CanvasCollab Studio Showcase"
+                  class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-neutral-950/10 pointer-events-none"></div>
+
+                <!-- Badge Tags -->
+                <div class="absolute top-3 left-3 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xs px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-700 font-mono text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 shadow-sm">
+                  WEB KELAS
+                </div>
+                <div class="absolute top-3 right-3 bg-neutral-900/95 dark:bg-white/95 text-white dark:text-neutral-900 px-2.5 py-1 rounded-md font-mono text-[11px] font-semibold shadow-sm">
+                  2026
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-6">
+                <!-- Metadata Separators -->
+                <div class="flex items-center gap-2 font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-2">
+                  <span>HTML5</span>
+                  <span aria-hidden="true">·</span>
+                  <span>TAILWINDCSS</span>
+                  <span aria-hidden="true">·</span>
+                  <span>JAVASCRIPT</span>
+                  <span aria-hidden="true">·</span>
+                  <span>GITHUB PAGES</span>
+                </div>
+
+                <h3 class="font-sans font-bold text-xl text-neutral-900 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors mb-2">
+                  WEB KELAS X TJKT 1
+                </h3>
+                
+                <p class="font-sans text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+                  Berisi sebuah data para siswa kelas X TJKT 1, Wali kelas, Struktur organisasi kelas, dan kumpulan kenangan event yang ada di SMK NEGERI 3 JEPARA
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="p-6 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-2 flex items-center justify-between gap-3">
+              <a href="https://x-tjkt-1-class.github.io/X-TJKT-1-Profile-Web/" target="_blank" rel="noopener noreferrer" class="font-sans text-xs font-semibold px-4 py-2 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 rounded-lg shadow-sm hover:shadow transition-all inline-flex items-center gap-1.5" aria-label="Visit CanvasCollab Studio">
+                <span>VISIT</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION: SKILLS SECTION                    -->
+    <!-- ========================================== -->
+    <section id="skills" class="py-16 md:py-24 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#09090b] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="scroll-reveal scroll-reveal-left mb-14">
+          <h2 class="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-neutral-900 dark:text-white leading-tight">
+            Skills &amp; Proficiencies
+          </h2>
+          <p class="font-sans text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl">
+            Keahlian yang sudah dipelajari dan dipraktekkan ke dalam projek yang sudah digunakan
+          </p>
+        </div>
+
+        <!-- 4 Skill Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- SKILL CATEGORY 1: Frontend Architecture -->
+          <div class="scroll-reveal scroll-reveal-scale delay-75 skill-group-card bg-neutral-50/70 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="w-11 h-11 bg-white dark:bg-neutral-800 flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4 shadow-xs" title="Frontend Code (&lt;/&gt;)">
+              <svg class="w-5 h-5 text-neutral-900 dark:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Closing Tag (&lt;/&gt;)">
+                <path d="m18 16 4-4-4-4" />
+                <path d="m6 8-4 4 4 4" />
+                <path d="m14.5 4-5 16" />
+              </svg>
+            </div>
+            <h3 class="font-sans font-bold text-lg text-neutral-900 dark:text-white mb-0.5">
+              CORE LANGUAGE
+            </h3>
+            <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-5">
+              BAHASA PEMROGRAMMAN YANG SUDAH DI PELAJARI
+            </p>
+
+            <ul class="space-y-2.5 font-sans text-xs">
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="HTML5 & Semantic DOM" data-level="98%" data-detail="Semantic layout, microdata, strict accessibility compliance.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">HTML5</span>
+                <span class="text-[11px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-600">85%</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="CSS3 & Tailwind CSS" data-level="96%" data-detail="Modern CSS grid, subgrid, container queries, custom utility design systems.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Tailwind &amp; Modern CSS</span>
+                <span class="text-[11px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-600">70%</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="JavaScript ESNext & TS" data-level="95%" data-detail="Deep event loop mastery, async paradigms, strict type systems.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">JavaScript / TypeScript</span>
+                <span class="text-[11px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-600">65%</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Canvas & Micro-Animations" data-level="90%" data-detail="60fps hardware accelerated rendering and CSS physics.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Python</span>
+                <span class="text-[11px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-600">45%</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- SKILL CATEGORY 2: Backend & Distributed Systems (Gemini AI logo) -->
+          <div class="scroll-reveal scroll-reveal-scale delay-150 skill-group-card bg-neutral-50/70 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="w-11 h-11 bg-white dark:bg-neutral-800 flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4 shadow-xs" title="Gemini AI">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Gemini AI Logo">
+                <defs>
+                  <linearGradient id="geminiIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4E85EB" />
+                    <stop offset="50%" stop-color="#9B72CB" />
+                    <stop offset="100%" stop-color="#D96570" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 1C12 7.075 7.075 12 1 12C7.075 12 12 16.925 12 23C12 16.925 16.925 12 23 12C16.925 12 12 7.075 12 1Z" fill="url(#geminiIconGrad)" />
+              </svg>
+            </div>
+            <h3 class="font-sans font-bold text-lg text-neutral-900 dark:text-white mb-0.5">
+              AI FOR EFFICIENCY
+            </h3>
+            <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-5">
+              Ai yang digunakan untuk membantu
+            </p>
+
+            <ul class="space-y-2.5 font-sans text-xs">
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Node.js & Express" data-level="92%" data-detail="RESTful microservices, streaming pipelines, middleware auth chains.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Gemini Ai</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="PostgreSQL & SQL" data-level="88%" data-detail="Schema normalization, index tuning, transaction isolation, migrations.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">ChatGPT</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="RESTful & WebSockets" data-level="94%" data-detail="Low-latency duplex communication, rate limiting, and webhook dispatch.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Claude Ai</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Authentication & Security" data-level="90%" data-detail="JWT, OAuth2 flows, CSRF protection, and AES-GCM data encryption.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Ai AGENT</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- SKILL CATEGORY 3: Developer Tooling (VS Code logo) -->
+          <div class="scroll-reveal scroll-reveal-scale delay-225 skill-group-card bg-neutral-50/70 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="w-11 h-11 bg-white dark:bg-neutral-800 flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4 shadow-xs" title="Visual Studio Code">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visual Studio Code Logo">
+                <defs>
+                  <linearGradient id="vscodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2488EA" />
+                    <stop offset="100%" stop-color="#0065A9" />
+                  </linearGradient>
+                </defs>
+                <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.94-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" fill="url(#vscodeGrad)"/>
+              </svg>
+            </div>
+            <h3 class="font-sans font-bold text-lg text-neutral-900 dark:text-white mb-0.5">
+              TOOLS &amp; SOFTWARE
+            </h3>
+            <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-5">
+              Alat dan Software yang digunakan
+            </p>
+
+            <ul class="space-y-2.5 font-sans text-xs">
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Git & CI/CD Pipelines" data-level="94%" data-detail="Trunk-based development, semantic commits, automated lint/build testing.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Git &amp; GitHub</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Core Web Vitals & Perf" data-level="95%" data-detail="Sub-100ms LCP, 0 CLS, tree shaking, and code splitting optimizations.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Visual Studio Code</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Vite & Bundlers" data-level="92%" data-detail="Modern ES module tooling, HMR configurations, roll-up plugins.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Google Ai Studio</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="WCAG 2.2 AA Accessibility" data-level="96%" data-detail="Screen reader testing, semantic ARIA roles, and keyboard focus trap handling.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Zed</span>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="WCAG 2.2 AA Accessibility" data-level="96%" data-detail="Screen reader testing, semantic ARIA roles, and keyboard focus trap handling.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">VMware Workstation</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- SKILL CATEGORY 4: Cloud & Architecture (Linux Tux logo) -->
+          <div class="scroll-reveal scroll-reveal-scale delay-300 skill-group-card bg-neutral-50/70 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
+            <div class="w-11 h-11 bg-white dark:bg-neutral-800 flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-700 mb-4 shadow-xs p-1 overflow-hidden" title="Linux OS (Sitting Tux)">
+              <img
+                src="/src/assets/images/tux.svg"
+                alt="Tux Linux Duduk (Sitting Penguin Mascot)"
+                class="w-full h-full object-contain select-none"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-sans font-bold text-lg text-neutral-900 dark:text-white mb-0.5">
+              OPERATING SYSTEMS
+            </h3>
+            <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-5">
+              Sistem Operasi yang digunakan
+            </p>
+
+            <ul class="space-y-2.5 font-sans text-xs">
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="AWS & Cloud Architecture" data-level="92%" data-detail="High-availability VPC design, serverless lambdas, and resilient S3 storage.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Windows 11 PRO</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Docker & Containers" data-level="90%" data-detail="Lightweight multi-stage container images and compose orchestration.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">CachyOS LINUX</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="CI/CD Pipelines" data-level="94%" data-detail="Automated testing, lint gates, and continuous delivery with GitHub Actions.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">XOS KINGFINIX</span>
+              </li>
+              <li class="skill-badge-item p-2.5 bg-white dark:bg-neutral-800/80 rounded-xl border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-between cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors shadow-2xs" data-skill="Linux & Shell Automation" data-level="88%" data-detail="POSIX shell automation, reverse proxy configuration, and daemon management.">
+                <span class="font-medium text-neutral-800 dark:text-neutral-200">Android 14</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION: EDUCATION SECTION                 -->
+    <!-- ========================================== -->
+    <section id="education" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/30 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="mb-14 scroll-reveal scroll-reveal-left">
+          <h2 class="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-neutral-900 dark:text-white">
+            Education Timeline
+          </h2>
+          <p class="font-sans text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl">
+            Perjalanan sekolah untuk menuju Masa depan yang cerah dan siap untuk masa yang akan datang
+          </p>
+        </div>
+
+        <!-- Timeline / Structured Card Layout -->
+        <div class="relative border-l border-neutral-200 dark:border-neutral-800 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-10">
+          
+          <!-- TIMELINE ITEM 1 -->
+          <div class="relative group scroll-reveal scroll-reveal-left delay-75">
+            <!-- Node Marker -->
+            <div class="absolute -left-[31px] sm:-left-[47px] top-6 w-3.5 h-3.5 rounded-full bg-neutral-900 dark:bg-white ring-4 ring-white dark:ring-neutral-950 transition-colors"></div>
+            
+            <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-3 py-1 rounded-full inline-block">
+                  2026 — Sekarang
+                </span>
+                <span class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                  SMK NEGERI 3 JEPARA
+                </span>
+              </div>
+
+              <h3 class="font-sans font-bold text-xl sm:text-2xl text-neutral-900 dark:text-white mb-1.5">
+                SMK NEGERI 3 JEPARA
+              </h3>
+              
+              <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-4 flex items-center gap-2">
+                <span>SEKOLAH KEJURUAN</span>
+                <span aria-hidden="true">·</span>
+                <span>TEKNIK JARINGAN KOMPUTER DAN TELEKOMUNIKASI</span>
+              </div>
+
+              <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+                Menekuni jurusan <b>Teknik Jaringan Komputer &amp; Telekomunikasi</b> serta mempelajari dan mempraktekkan dasar-dasar <b>pemrogramman</b>
+              </p>
+
+              <!-- Coursework / Highlights -->
+              <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-wrap items-center gap-2 text-xs font-medium">
+                <span class="text-neutral-400 dark:text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Achievement:</span>
+                <span class="bg-neutral-100 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-md border border-neutral-200/70 dark:border-neutral-700/60">Coming Soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIMELINE ITEM 2 -->
+          <div class="relative group scroll-reveal scroll-reveal-left delay-150">
+            <div class="absolute -left-[31px] sm:-left-[47px] top-6 w-3.5 h-3.5 rounded-full bg-neutral-900 dark:bg-white ring-4 ring-white dark:ring-neutral-950 transition-colors"></div>
+            
+            <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 px-3 py-1 rounded-full inline-block border border-neutral-200 dark:border-neutral-700">
+                  2023 — 2026
+                </span>
+                <span class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                  SMP NEGERI 5 JEPARA
+                </span>
+              </div>
+
+              <h3 class="font-sans font-bold text-xl sm:text-2xl text-neutral-900 dark:text-white mb-1.5">
+                SMP NEGERI 5 JEPARA
+              </h3>
+              
+              <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-4 flex items-center gap-2">
+                <span>SEKOLAH MENENGAH PERTAMA</span>
+              </div>
+
+              <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+                Sudah menaruh minat serta ketertarikan pada bidang <b>Informatika</b> dan berhasil <b>Menjuarai</b> sebuah ajang perlombaan bidang olah raga pada cabor atletik lempar lembing putra
+              </p>
+
+              <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-wrap items-center gap-2 text-xs font-medium">
+                <span class="text-neutral-400 dark:text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Achievement:</span>
+                <span class="bg-neutral-100 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-md border border-neutral-200/70 dark:border-neutral-700/60">JUARA ATLETIK LEMPAR LEMBING PUTRA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIMELINE ITEM 3 -->
+          <div class="relative group scroll-reveal scroll-reveal-left delay-225">
+            <div class="absolute -left-[31px] sm:-left-[47px] top-6 w-3.5 h-3.5 rounded-full bg-neutral-900 dark:bg-white ring-4 ring-white dark:ring-neutral-950 transition-colors"></div>
+            
+            <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 px-3 py-1 rounded-full inline-block border border-neutral-200 dark:border-neutral-700">
+                  2017 · 2023 
+                </span>
+                <span class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                  SD NEGERI 4 PANGGANG
+                </span>
+              </div>
+
+              <h3 class="font-sans font-bold text-xl sm:text-2xl text-neutral-900 dark:text-white mb-1.5">
+                SD NEGERI 4 PANGGANG
+              </h3>
+              
+              <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-4 flex items-center gap-2">
+                <span>SEKOLAH DASAR</span>
+              </div>
+
+              <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+                Tertarik pada seluruh cabang olahraga dan menekuninya terutama pada bidang <b>Triathlon</b>, dan <b>Atletik</b>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION: CERTIFICATES SECTION              -->
+    <!-- ========================================== -->
+    <section id="certificates" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="mb-14 scroll-reveal scroll-reveal-left">
+          <h2 class="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-neutral-900 dark:text-white">
+            CERTIFICATES
+          </h2>
+          <p class="font-sans text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl">
+            Piagam penghargaan yang di dapat setelah menyelesaikan suatu perlombaan atau event
+          </p>
+        </div>
+
+        <!-- Certificates Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- ARTICLE 2 (Matched exactly to Article 1) -->
+          <article class="scroll-reveal scroll-reveal-scale delay-75 project-card bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden" data-category="fullstack" data-id="p1">
+            <div>
+              <!-- Visual Art Header -->
+              <div class="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-800 overflow-hidden group/thumb">
+                <img
+                  id="projectPhoto2"
+                  src="foto/piagam.png"
+                  alt="Piagam Juara Popda"
+                  class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-neutral-950/10 pointer-events-none"></div>
+
+                <!-- Badge Tags -->
+                <div class="absolute top-3 left-3 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xs px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-700 font-mono text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 shadow-sm">
+                  Atletik
+                </div>
+                <div class="absolute top-3 right-3 bg-neutral-900/95 dark:bg-white/95 text-white dark:text-neutral-900 px-2.5 py-1 rounded-md font-mono text-[11px] font-semibold shadow-sm">
+                  Popda 2024
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-6">
+                <!-- Metadata Separators -->
+                <h3 class="font-sans font-bold text-xl text-neutral-900 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors mb-2">
+                  Juara Atletik Lempar Lembing
+                </h3>
+                
+                <p class="font-sans text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+                 Sukses ikut serta dan Menjuarai ajang perlombaan Pekan Olahraga Pelajar Daerah pada cabor Atletik Lempar lembing putra
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="p-6 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-2 flex items-center justify-between gap-3">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="font-sans text-xs font-semibold px-4 py-2 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 rounded-lg shadow-sm hover:shadow transition-all inline-flex items-center gap-1.5" aria-label="Visit CanvasCollab Studio">
+                <span>Explore Live</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION: CONTACT SECTION                   -->
+    <!-- ========================================== -->
+    <section id="contact" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/30 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="mb-14 scroll-reveal scroll-reveal-left">
+          <h2 class="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-neutral-900 dark:text-white">
+            Let's Build Something Great
+          </h2>
+          <p class="font-sans text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl">
+            Siap Berkontribusi besar dalam menciptakan sebuah perubahan yang sangat bermanfaat untuk masa yang akan datang
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left Column: Contact Cards & Direct Info -->
+          <div class="lg:col-span-5 space-y-6 scroll-reveal scroll-reveal-left delay-100">
+            
+            <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm">
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 mb-4">
+                Direct Channels
+              </div>
+
+              <h3 class="font-sans font-bold text-2xl text-neutral-900 dark:text-white mb-2">
+                Fast Dispatch
+              </h3>
+              
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+                I am currently open to full-time Software Engineer positions, contract product engineering, and high-impact advisory work.
+              </p>
+
+              <!-- Email with Quick Copy -->
+              <div class="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700/80 mb-5">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-1">Direct Email</div>
+                <div class="flex items-center justify-between gap-2">
+                  <span id="contactEmail" class="font-mono text-sm font-semibold text-neutral-900 dark:text-white select-all truncate">
+                    yanzserfort0@gmail.com
+                  </span>
+                  <button id="copyEmailBtn" type="button" class="px-3.5 py-1.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 text-xs font-semibold transition-all shrink-0 cursor-pointer">
+                    Copy 📋
+                  </button>
+                </div>
+              </div>
+
+              <!-- Location & Response Stats -->
+              <div class="space-y-2.5 text-xs text-neutral-700 dark:text-neutral-300">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/40 border border-neutral-200/80 dark:border-neutral-700/60">
+                  <span class="font-medium text-neutral-500 dark:text-neutral-400">📍 Location:</span>
+                  <span class="font-semibold text-neutral-900 dark:text-white">Jepara, East Java(Indonesia)</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/40 border border-neutral-200/80 dark:border-neutral-700/60">
+                  <span class="font-medium text-neutral-500 dark:text-neutral-400">⏱️ Response:</span>
+                  <span class="font-semibold text-neutral-900 dark:text-white">&lt; 24 Hours</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/40 border border-neutral-200/80 dark:border-neutral-700/60">
+                  <span class="font-medium text-neutral-500 dark:text-neutral-400">💼 Availability:</span>
+                  <span class="font-semibold text-emerald-600 dark:text-emerald-400">Open for collaboration</span>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="mt-6 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3">Connect Online:</div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <a href="https://github.com/yanyeager" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-900 hover:text-white dark:bg-neutral-800 dark:hover:bg-white dark:hover:text-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 transition-colors">
+                    GitHub ↗
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-900 hover:text-white dark:bg-neutral-800 dark:hover:bg-white dark:hover:text-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 transition-colors">
+                    LinkedIn ↗
+                  </a>
+                  <a href="https://instagram.com/yanradty_" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-900 hover:text-white dark:bg-neutral-800 dark:hover:bg-white dark:hover:text-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 transition-colors">
+                    Instagram ↗
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Clean Contact Form -->
+          <div class="lg:col-span-7 scroll-reveal scroll-reveal-right delay-200">
+            <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm">
+              
+              <div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-100 dark:border-neutral-800">
+                <div>
+                  <h3 class="font-sans font-bold text-2xl text-neutral-900 dark:text-white">
+                    Send a Message
+                  </h3>
+                  <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    Fill out the form below and I will get back to you promptly.
+                  </p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-xl">
+                  ✉️
+                </div>
+              </div>
+
+              <form id="contactForm" class="space-y-4" novalidate>
+                
+                <!-- Name Field -->
+                <div>
+                  <label for="userName" class="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+                    Your Name <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="userName" name="userName" required placeholder="Julian Khasiib Raditya" class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 font-sans text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:bg-white dark:focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent outline-none transition-all" />
+                  <p id="nameError" class="hidden text-xs text-red-500 font-medium mt-1"></p>
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                  <label for="userEmail" class="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+                    Your Email Address <span class="text-red-500">*</span>
+                  </label>
+                  <input type="email" id="userEmail" name="userEmail" required placeholder="yanzserfort0@gmail.com" class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 font-sans text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:bg-white dark:focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent outline-none transition-all" />
+                  <p id="emailError" class="hidden text-xs text-red-500 font-medium mt-1"></p>
+                </div>
+
+                <!-- Subject Field -->
+                <div>
+                  <label for="userSubject" class="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+                    Subject / Discussion Topic
+                  </label>
+                  <select id="userSubject" name="userSubject" class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 font-sans text-sm font-medium text-neutral-800 dark:text-neutral-200 focus:bg-white dark:focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent outline-none transition-all cursor-pointer">
+                    <option value="Full-Time Engineering Role">Full-Time Engineering Role</option>
+                    <option value="Contract / Freelance Project">Contract / Freelance Project</option>
+                    <option value="Consulting & Technical Advisory">Consulting &amp; Technical Advisory</option>
+                    <option value="Casual Technical Chat">Casual Technical Chat / Mentorship</option>
+                  </select>
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                  <label for="userMessage" class="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+                    Message Body <span class="text-red-500">*</span>
+                  </label>
+                  <textarea id="userMessage" name="userMessage" rows="4" required placeholder="Halo Iyan, saya suka berbicara tentang mu untuk membahas perubahan yang besar bagi masa yang akan datang..." class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 font-sans text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:bg-white dark:focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent outline-none transition-all resize-y"></textarea>
+                  <p id="messageError" class="hidden text-xs text-red-500 font-medium mt-1"></p>
+                </div>
+
+                <!-- Form Submit Button -->
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <button type="submit" id="submitFormBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 font-sans text-sm font-bold tracking-wide transition-all shadow-sm hover:shadow active:scale-[0.99] cursor-pointer">
+                    Send Message
+                  </button>
+                  <span class="text-xs text-neutral-500 dark:text-neutral-400 text-center sm:text-right">
+                    Online
+                  </span>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECTION: FOOTER SECTION                    -->
+  <!-- ========================================== -->
+  <footer class="bg-neutral-950 text-white border-t border-neutral-800 py-14 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-neutral-800">
+        
+        <!-- Brand & Tagline -->
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-9 h-9 rounded-xl bg-white text-neutral-950 font-sans font-black text-sm flex items-center justify-center">
+              YN
+            </div>
+            <span class="font-sans font-bold text-2xl tracking-tight text-white">Yan Raditya</span>
+          </div>
+          <p class="text-xs text-neutral-400 max-w-md leading-relaxed">
+            Full-Stack Software Engineer &amp; Creative Technologist. Dedicated to clean architecture, high performance, and thoughtful user experiences.
+          </p>
+        </div>
+
+        <!-- Footer Navigation Links -->
+        <div class="flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+          <a href="#hero" class="hover:text-white transition-colors">Home</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+          <a href="#education" class="hover:text-white transition-colors">Education</a>
+          <a href="#certificates" class="hover:text-white transition-colors">Certs</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" type="button" aria-label="Back to top of page" class="px-4 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold border border-neutral-800 transition-colors cursor-pointer flex items-center gap-1.5">
+          <span>Kembali ke Atas</span>
+          <span>↑</span>
+        </button>
+
+      </div>
+
+      <!-- Copyright & Info -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+        <div>
+          © 2026 Yan Raditya. All rights reserved.
+        </div>
+        <div class="flex items-center gap-3 font-mono text-[11px]">
+          <span>HTML%</span>
+          <span aria-hidden="true">·</span>
+          <span>Tailwind CSS</span>
+          <span aria-hidden="true">·</span>
+          <span>Modern Portfolio</span>
+        </div>
+      </div>
+
+    </div>
+
+  <!-- ========================================== -->
+  <!-- TOAST NOTIFICATION CONTAINER               -->
+  <!-- ========================================== -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none" aria-live="polite"></div>
+
+  <!-- ========================================== -->
+  <!-- VANILLA JAVASCRIPT LOGIC                   -->
+  <!-- ========================================== -->
+  <script>
+    // ==========================================
+    // JS: COMIC SOUND SYNTHESIZER (WEB AUDIO API)
+    // ==========================================
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playComicSound() {
+      // Audio synth disabled for clean, non-intrusive modern UX
+    }
+
+    // Toggle Sound Button
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    const mobileSoundToggleBtn = document.getElementById('mobileSoundToggleBtn');
+    const mobileSoundIcon = document.getElementById('mobileSoundIcon');
+
+    function updateSoundUI() {
+      const icon = soundEnabled ? '🔊' : '🔇';
+      if (soundIcon) soundIcon.textContent = icon;
+      if (mobileSoundIcon) mobileSoundIcon.textContent = icon;
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      updateSoundUI();
+    }
+
+    if (soundToggleBtn) soundToggleBtn.addEventListener('click', toggleSound);
+    if (mobileSoundToggleBtn) mobileSoundToggleBtn.addEventListener('click', toggleSound);
+
+    // ==========================================
+    // JS: LIGHT MODE / DARK MODE THEME TOGGLE
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
+    const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+    const mobileMenuThemeBtn = document.getElementById('mobileMenuThemeBtn');
+    const mobileMenuThemeIcon = document.getElementById('mobileMenuThemeIcon');
+    const mobileMenuThemeText = document.getElementById('mobileMenuThemeText');
+
+    function updateThemeUI(isDark) {
+      const icon = isDark ? '☀️' : '🌙';
+      const label = isDark ? 'Mode Terang' : 'Mode Gelap';
+      const title = isDark ? 'Ganti ke Mode Terang (Light)' : 'Ganti ke Mode Gelap (Dark)';
+
+      if (themeIcon) themeIcon.textContent = icon;
+      if (mobileThemeIcon) mobileThemeIcon.textContent = icon;
+      if (mobileMenuThemeIcon) mobileMenuThemeIcon.textContent = icon;
+      if (mobileMenuThemeText) mobileMenuThemeText.textContent = label;
+
+      if (themeToggleBtn) themeToggleBtn.setAttribute('title', title);
+      if (mobileThemeToggleBtn) mobileThemeToggleBtn.setAttribute('title', title);
+    }
+
+    function applyTheme(theme, notify = false) {
+      const isDark = theme === 'dark';
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      updateThemeUI(isDark);
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (e) {}
+
+      if (notify) {
+        showToast(isDark ? 'Mode Gelap Aktif 🌙' : 'Mode Terang Aktif ☀️');
+      }
+    }
+
+    function toggleTheme() {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      applyTheme(isCurrentlyDark ? 'light' : 'dark', true);
+    }
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileMenuThemeBtn) mobileMenuThemeBtn.addEventListener('click', toggleTheme);
+
+    // Sync initial state
+    updateThemeUI(document.documentElement.classList.contains('dark'));
+
+    // ==========================================
+    // JS: HAMBURGER MENU (MOBILE NAVIGATION)
+    // ==========================================
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+
+    let isMenuOpen = false;
+
+    function toggleMobileMenu(open) {
+      isMenuOpen = typeof open === 'boolean' ? open : !isMenuOpen;
+      menuToggleBtn.setAttribute('aria-expanded', isMenuOpen ? 'true' : 'false');
+
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('hidden');
+        bar1.classList.add('rotate-45', 'translate-y-2');
+        bar2.classList.add('opacity-0');
+        bar3.classList.add('-rotate-45', '-translate-y-2');
+      } else {
+        mobileMenu.classList.add('hidden');
+        bar1.classList.remove('rotate-45', 'translate-y-2');
+        bar2.classList.remove('opacity-0');
+        bar3.classList.remove('-rotate-45', '-translate-y-2');
+      }
+    }
+
+    if (menuToggleBtn) {
+      menuToggleBtn.addEventListener('click', () => toggleMobileMenu());
+    }
+
+    // Close menu when clicking internal nav links
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => toggleMobileMenu(false));
+    });
+
+    // Close menu on click outside
+    document.addEventListener('click', (e) => {
+      if (isMenuOpen && !mobileMenu.contains(e.target) && !menuToggleBtn.contains(e.target)) {
+        toggleMobileMenu(false);
+      }
+    });
+
+    // ==========================================
+    // JS: PHOTO CARD INTERACTIONS & UPLOAD
+    // ==========================================
+    const avatarCard = document.getElementById('avatarCard');
+    const profilePhotoImg = document.getElementById('profilePhotoImg');
+    const photoUploadInput = document.getElementById('photoUploadInput');
+    const resetPhotoBtn = document.getElementById('resetPhotoBtn');
+    const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+    const photoHalftoneOverlay = document.getElementById('photoHalftoneOverlay');
+    const photoCardStatusText = document.getElementById('photoCardStatusText');
+    const speechBubbleText = document.getElementById('speechBubbleText');
+
+    const defaultPhotoSrc = '/src/assets/images/profile_photo_card_1791587378751.jpg';
+    const photoQuotes = [
+      '"Full-Stack Software Engineer & Creative Technologist."',
+      '"Specialized in TypeScript, Node.js, and modern UI engineering."',
+      '"Clean architecture, zero memory leaks, and high performance."',
+      '"Open for full-time engineering roles and collaborative projects."'
+    ];
+    let photoQuoteIndex = 0;
+
+    // Load saved custom photo from localStorage if present
+    try {
+      const savedPhoto = localStorage.getItem('userProfilePhoto');
+      if (savedPhoto && profilePhotoImg) {
+        profilePhotoImg.src = savedPhoto;
+        if (resetPhotoBtn) resetPhotoBtn.classList.remove('hidden');
+      }
+    } catch (e) {
+      // localStorage unavailable or blocked
+    }
+
+    // Photo Upload Handler
+    if (photoUploadInput && profilePhotoImg) {
+      photoUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+          showToast('Harap pilih file gambar (JPG, PNG, WebP) ⚠️');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (loadEvent) => {
+          const result = loadEvent.target.result;
+          profilePhotoImg.src = result;
+          try {
+            localStorage.setItem('userProfilePhoto', result);
+          } catch (storageErr) {
+            // Image might exceed localStorage quota
+          }
+          if (resetPhotoBtn) resetPhotoBtn.classList.remove('hidden');
+          playComicSound('success');
+          showToast('Foto profil berhasil diperbarui! 📸');
+          if (photoCardStatusText) {
+            photoCardStatusText.textContent = '"Foto kustom aktif! Siap berkarya!"';
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Reset to Default Photo
+    if (resetPhotoBtn && profilePhotoImg) {
+      resetPhotoBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profilePhotoImg.src = defaultPhotoSrc;
+        try {
+          localStorage.removeItem('userProfilePhoto');
+        } catch (e) {}
+        resetPhotoBtn.classList.add('hidden');
+        if (photoUploadInput) photoUploadInput.value = '';
+        showToast('Foto profil dikembalikan ke default 🔄');
+        if (photoCardStatusText) {
+          photoCardStatusText.textContent = '"Foto default dipulihkan!"';
+        }
+      });
+    }
+
+    // ==========================================
+    // JS: CUSTOM BRAND LOGO (TANPA KONTAINER)
+    // ==========================================
+    const siteBrandLogo = document.getElementById('siteBrandLogo');
+    const brandLogoUploadInput = document.getElementById('brandLogoUploadInput');
+
+    try {
+      const savedLogo = localStorage.getItem('userCustomBrandLogo');
+      if (savedLogo && siteBrandLogo) {
+        siteBrandLogo.src = savedLogo;
+      }
+    } catch (e) {}
+
+    if (siteBrandLogo && brandLogoUploadInput) {
+      siteBrandLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        brandLogoUploadInput.click();
+      });
+
+      brandLogoUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+          showToast('Harap pilih file gambar (PNG, SVG, JPG, WebP)!');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (uploadEvent) => {
+          if (siteBrandLogo) {
+            siteBrandLogo.src = uploadEvent.target.result;
+          }
+          try {
+            localStorage.setItem('userCustomBrandLogo', uploadEvent.target.result);
+          } catch (err) {}
+          showToast('Logo brand kustom berhasil dipasang! ✨');
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Filter Toggle Cycle: Monochrome -> High Contrast -> Original Color
+    let currentFilterMode = 0; // 0 = Monokrom, 1 = Kontras, 2 = Warna Asli
+    if (toggleFilterBtn && profilePhotoImg) {
+      toggleFilterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentFilterMode = (currentFilterMode + 1) % 3;
+
+        if (currentFilterMode === 0) {
+          // Monochrome Clean
+          profilePhotoImg.className = 'w-full h-full object-cover object-center grayscale contrast-110 transition-all duration-300 group-hover/photo:scale-105';
+          if (photoHalftoneOverlay) photoHalftoneOverlay.style.opacity = '0';
+          toggleFilterBtn.textContent = '🎨 Monokrom';
+          showToast('Filter: Monokrom Minimalis');
+        } else if (currentFilterMode === 1) {
+          // Deep Contrast
+          profilePhotoImg.className = 'w-full h-full object-cover object-center grayscale contrast-125 brightness-95 transition-all duration-300 group-hover/photo:scale-105';
+          if (photoHalftoneOverlay) photoHalftoneOverlay.style.opacity = '0';
+          toggleFilterBtn.textContent = '🕶️ Kontras';
+          showToast('Filter: High-Contrast Monokrom');
+        } else {
+          // Original Color
+          profilePhotoImg.className = 'w-full h-full object-cover object-center transition-all duration-300 group-hover/photo:scale-105';
+          if (photoHalftoneOverlay) photoHalftoneOverlay.style.opacity = '0';
+          toggleFilterBtn.textContent = '🌈 Warna Asli';
+          showToast('Filter: Warna Asli Foto');
+        }
+      });
+    }
+
+    // Card Click Interactive Quotes
+    if (avatarCard) {
+      avatarCard.addEventListener('click', (e) => {
+        // Ignore if clicking buttons/inputs/links directly
+        if (e.target.closest('button, label, input, a')) return;
+
+        playComicSound('zap');
+        photoQuoteIndex = (photoQuoteIndex + 1) % photoQuotes.length;
+        const quote = photoQuotes[photoQuoteIndex];
+        if (photoCardStatusText) photoCardStatusText.textContent = quote;
+        if (speechBubbleText) speechBubbleText.textContent = quote;
+      });
+
+      // Interactive 3D Perspective Tilt Effect
+      avatarCard.addEventListener('mousemove', (e) => {
+        const rect = avatarCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -7; // max 7 deg
+        const rotateY = ((x - centerX) / centerX) * 7; // max 7 deg
+        avatarCard.style.setProperty('transform', `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale(1.02)`, 'important');
+      });
+
+      avatarCard.addEventListener('mouseleave', () => {
+        avatarCard.style.removeProperty('transform');
+      });
+    }
+
+    // ==========================================
+    // JS: PROJECT FILTERING LOGIC
+    // ==========================================
+    const filterButtons = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active tab styling
+        filterButtons.forEach((b) => {
+          b.setAttribute('aria-selected', 'false');
+          b.classList.remove('bg-black', 'text-white');
+          b.classList.add('bg-white', 'text-black', 'border-transparent');
+        });
+        btn.setAttribute('aria-selected', 'true');
+        btn.classList.remove('bg-white', 'text-black', 'border-transparent');
+        btn.classList.add('bg-black', 'text-white', 'border-black');
+
+        // Filter projects
+        projectCards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ==========================================
+    // JS: PROJECT DOSSIER MODAL DATA & HANDLERS
+    // ==========================================
+    const projectDossiers = {
+      p1: {
+        title: 'ComicCanvas Studio',
+        category: 'FULL-STACK REAL-TIME APP',
+        stack: 'TypeScript · Node.js · WebSockets · HTML5 Canvas · Redis',
+        overview: 'ComicCanvas is a full-featured collaborative digital comic book canvas engine designed for multi-artist storyboarding. Features hardware-accelerated vector brush smoothing, delta compression, and sub-20ms frame updates.',
+        challenges: [
+          'Engineered state conflict resolution using operational transform mechanics for multiplayer inking.',
+          'Built custom SVG and WebGL export pipelines supporting up to 8K print-ready resolutions.',
+          'Zero latency UI feedback on mobile touch screens with synthetic pointer acceleration.'
+        ],
+        codeUrl: 'https://github.com'
+      },
+      p2: {
+        title: 'OmniMarkdown Studio',
+        category: 'OFFLINE-FIRST PRODUCTIVITY',
+        stack: 'Vanilla JavaScript · IndexedDB · Service Workers · Web Components',
+        overview: 'A distraction-free markdown documentation workspace with immediate client-side AST rendering, bidirectional table formatting, and local encrypted cache. Operates 100% offline without relying on remote cloud endpoints.',
+        challenges: [
+          'Implemented custom incremental markdown tokenizer achieving 60fps typing responsiveness on 100,000+ word manuscripts.',
+          'Created automated snapshot rollback system stored completely in browser IndexedDB.',
+          'Export presets supporting PDF, raw HTML, and styled EPUB.'
+        ],
+        codeUrl: 'https://github.com'
+      },
+      p3: {
+        title: 'NeuraVault Encrypt',
+        category: 'SECURITY & CRYPTOGRAPHY',
+        stack: 'Web Crypto API · Node.js / Express · PostgreSQL · Docker',
+        overview: 'A zero-knowledge secret vault and password manager implementing WebCrypto AES-256-GCM symmetric encryption directly on the client machine before network dispatch. The server never observes plaintext keys.',
+        challenges: [
+          'Engineered argon2id client-side key derivation preventing rainbow table vectors.',
+          'Passkey WebAuthn hardware biometric support for seamless passwordless unlocking.',
+          'Audit log cryptographically hashed to detect unauthorized permission adjustments.'
+        ],
+        codeUrl: 'https://github.com'
+      },
+      p4: {
+        title: 'PixelQuest Arcade Engine',
+        category: 'HTML5 CANVAS & GAMING',
+        stack: 'TypeScript · HTML5 2D Canvas · Web Audio API · Vite',
+        overview: 'A lightweight 2D platformer engine built without bloated third-party game frameworks. Includes an interactive in-browser level creator, tilemap collision matrices, and dynamic chiptune sound synthesis.',
+        challenges: [
+          'Deterministic fixed-timestep game loop preventing platform clipping at variable refresh rates (60Hz / 120Hz / 144Hz).',
+          'Synthesized retro 8-bit sound effects using Web Audio API oscillators with zero external audio assets.',
+          'Export and import level files as shareable base64 URI strings.'
+        ],
+        codeUrl: 'https://github.com'
+      },
+      p5: {
+        title: 'DevPulse Engineering HQ',
+        category: 'DEV TELEMETRY DASHBOARD',
+        stack: 'Tailwind CSS · REST APIs · Web Workers · Chart.js',
+        overview: 'A developer productivity cockpit aggregating commit frequency, PR velocity, and automated CI test runs into clean tabular views and high-contrast trend charts with zero telemetry creep.',
+        challenges: [
+          'Normalized multi-vendor Git REST responses into a unified offline-first schema.',
+          'Optimized background worker parsing to eliminate main thread UI pauses during huge repo syncs.',
+          'Enforced full keyboard navigation across all chart inspect points and filter dropdowns.'
+        ],
+        codeUrl: 'https://github.com'
+      },
+      p6: {
+        title: 'Monochrome Supply Store',
+        category: 'HEADLESS E-COMMERCE',
+        stack: 'Next.js APIs · Stripe Elements · Modern Tailwind · Micro-Interactions',
+        overview: 'An ultra-fast neo-brutalist e-commerce showcase featuring instant local cart persistence, optimistic checkout confirmation, and custom black & white cartoon visual aesthetics.',
+        challenges: [
+          'Achieved a perfect 100/100 Google Lighthouse score across Performance, Accessibility, Best Practices, and SEO.',
+          'Secure Stripe webhook handler with idempotent order deduplication.',
+          'Sub-50ms client-side search across entire SKU catalog with fuzzy query fallback.'
+        ],
+        codeUrl: 'https://github.com'
+      }
+    };
+
+    const projectModal = document.getElementById('projectModal');
+    const projectModalCloseBtn = document.getElementById('projectModalCloseBtn');
+    const modalDemoCloseBtn = document.getElementById('modalDemoCloseBtn');
+    const modalCategoryBadge = document.getElementById('modalCategoryBadge');
+    const modalProjectTitle = document.getElementById('modalProjectTitle');
+    const modalTechStack = document.getElementById('modalTechStack');
+    const modalOverview = document.getElementById('modalOverview');
+    const modalChallenges = document.getElementById('modalChallenges');
+    const modalCodeLink = document.getElementById('modalCodeLink');
+
+    function openProjectModal(id) {
+      const data = projectDossiers[id];
+      if (!data) return;
+
+      modalCategoryBadge.textContent = data.category;
+      modalProjectTitle.textContent = data.title;
+      modalTechStack.textContent = data.stack;
+      modalOverview.textContent = data.overview;
+      modalCodeLink.href = data.codeUrl;
+
+      // Populate challenges
+      modalChallenges.innerHTML = '';
+      data.challenges.forEach((ch) => {
+        const li = document.createElement('li');
+        li.textContent = ch;
+        modalChallenges.appendChild(li);
+      });
+
+      projectModal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      projectModalCloseBtn.focus();
+    }
+
+    function closeProjectModal() {
+      projectModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    document.querySelectorAll('.view-dossier-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-project');
+        openProjectModal(id);
+      });
+    });
+
+    if (projectModalCloseBtn) projectModalCloseBtn.addEventListener('click', closeProjectModal);
+    if (modalDemoCloseBtn) modalDemoCloseBtn.addEventListener('click', closeProjectModal);
+
+    // Live demo trigger toast
+    document.querySelectorAll('.live-demo-trigger').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = btn.getAttribute('data-title');
+        showToast(`Launching Preview Sandbox for "${title}" 🚀`);
+      });
+    });
+
+    // ==========================================
+    // JS: RESUME / CV MODAL HANDLERS
+    // ==========================================
+    const resumeModal = document.getElementById('resumeModal');
+    const resumeModalOpenBtn = document.getElementById('resumeModalOpenBtn');
+    const resumeModalCloseBtn = document.getElementById('resumeModalCloseBtn');
+    const resumePrintBtn = document.getElementById('resumePrintBtn');
+
+    function openResumeModal() {
+      resumeModal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      resumeModalCloseBtn.focus();
+    }
+
+    function closeResumeModal() {
+      resumeModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (resumeModalOpenBtn) resumeModalOpenBtn.addEventListener('click', openResumeModal);
+    if (resumeModalCloseBtn) resumeModalCloseBtn.addEventListener('click', closeResumeModal);
+    if (resumePrintBtn) {
+      resumePrintBtn.addEventListener('click', () => {
+        window.print();
+      });
+    }
+
+    // ==========================================
+    // JS: CERTIFICATE VERIFICATION MODAL
+    // ==========================================
+    const certModal = document.getElementById('certModal');
+    const certModalCloseBtn = document.getElementById('certModalCloseBtn');
+    const certModalDismissBtn = document.getElementById('certModalDismissBtn');
+    const certModalTitle = document.getElementById('certModalTitle');
+    const certModalIssuer = document.getElementById('certModalIssuer');
+    const certModalID = document.getElementById('certModalID');
+
+    document.querySelectorAll('.cert-verify-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const certName = btn.getAttribute('data-cert');
+        const certId = btn.getAttribute('data-id');
+        const certIssuer = btn.getAttribute('data-issuer');
+
+        certModalTitle.textContent = certName;
+        certModalIssuer.textContent = certIssuer;
+        certModalID.textContent = certId;
+
+        certModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        certModalCloseBtn.focus();
+      });
+    });
+
+    function closeCertModal() {
+      certModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (certModalCloseBtn) certModalCloseBtn.addEventListener('click', closeCertModal);
+    if (certModalDismissBtn) certModalDismissBtn.addEventListener('click', closeCertModal);
+
+    // ==========================================
+    // JS: CERTIFICATE PHOTO VIEWER MODAL
+    // ==========================================
+    const certPhotoModal = document.getElementById('certPhotoModal');
+    const certPhotoModalCloseBtn = document.getElementById('certPhotoModalCloseBtn');
+    const certPhotoModalDismissBtn = document.getElementById('certPhotoModalDismissBtn');
+    const certPhotoModalTitle = document.getElementById('certPhotoModalTitle');
+    const certPhotoBadge = document.getElementById('certPhotoBadge');
+
+    function openCertPhotoModal(title, badge) {
+      if (certPhotoModalTitle && title) certPhotoModalTitle.textContent = title;
+      if (certPhotoBadge && badge) certPhotoBadge.textContent = badge;
+      if (certPhotoModal) {
+        certPhotoModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        if (certPhotoModalCloseBtn) certPhotoModalCloseBtn.focus();
+        playComicSound('pop');
+      }
+    }
+
+    function closeCertPhotoModal() {
+      if (certPhotoModal) {
+        certPhotoModal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    document.querySelectorAll('.cert-photo-view-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const title = btn.getAttribute('data-title');
+        const badge = btn.getAttribute('data-badge');
+        openCertPhotoModal(title, badge);
+      });
+    });
+
+    if (certPhotoModalCloseBtn) certPhotoModalCloseBtn.addEventListener('click', closeCertPhotoModal);
+    if (certPhotoModalDismissBtn) certPhotoModalDismissBtn.addEventListener('click', closeCertPhotoModal);
+
+    // Close all modals on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+        closeResumeModal();
+        closeCertModal();
+        closeCertPhotoModal();
+      }
+    });
+
+    // Close modal on click outside modal card
+    [projectModal, resumeModal, certModal, certPhotoModal].forEach((modal) => {
+      if (!modal) return;
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeProjectModal();
+          closeResumeModal();
+          closeCertModal();
+          closeCertPhotoModal();
+        }
+      });
+    });
+
+    // ==========================================
+    // JS: SKILL BADGE CLICK HANDLER
+    // ==========================================
+    const inspectSkillName = document.getElementById('inspectSkillName');
+    const inspectSkillDesc = document.getElementById('inspectSkillDesc');
+    const inspectSkillLevel = document.getElementById('inspectSkillLevel');
+
+    document.querySelectorAll('.skill-badge-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        const skill = item.getAttribute('data-skill');
+        const level = item.getAttribute('data-level');
+        const desc = item.getAttribute('data-detail');
+
+        if (inspectSkillName) inspectSkillName.textContent = skill;
+        if (inspectSkillDesc) inspectSkillDesc.textContent = desc;
+        if (inspectSkillLevel) inspectSkillLevel.textContent = level;
+
+        showToast(`Skill: ${skill} (${level}) ⚡`);
+      });
+    });
+
+    // ==========================================
+    // JS: CONTACT FORM VALIDATION & SUBMISSION
+    // ==========================================
+    const contactForm = document.getElementById('contactForm');
+    const userName = document.getElementById('userName');
+    const userEmail = document.getElementById('userEmail');
+    const userMessage = document.getElementById('userMessage');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const contactEmail = document.getElementById('contactEmail');
+
+    // Email Copy Handler
+    if (copyEmailBtn && contactEmail) {
+      copyEmailBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(contactEmail.textContent.trim()).then(() => {
+          copyEmailBtn.textContent = 'COPIED! ✓';
+          playComicSound('success');
+          showToast('Email address copied to clipboard! 📋');
+          setTimeout(() => {
+            copyEmailBtn.textContent = 'Copy 📋';
+          }, 2500);
+        }).catch(() => {
+          showToast('Select text manually to copy');
+        });
+      });
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        // Reset errors
+        nameError.classList.add('hidden');
+        emailError.classList.add('hidden');
+        messageError.classList.add('hidden');
+
+        // Validate Name
+        if (!userName.value.trim()) {
+          nameError.textContent = 'Silakan masukkan nama Anda.';
+          nameError.classList.remove('hidden');
+          isValid = false;
+        }
+
+        // Validate Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!userEmail.value.trim() || !emailRegex.test(userEmail.value.trim())) {
+          emailError.textContent = 'Silakan masukkan alamat email yang valid.';
+          emailError.classList.remove('hidden');
+          isValid = false;
+        }
+
+        // Validate Message
+        if (!userMessage.value.trim() || userMessage.value.trim().length < 10) {
+          messageError.textContent = 'Silakan tulis pesan minimal 10 karakter.';
+          messageError.classList.remove('hidden');
+          isValid = false;
+        }
+
+        if (isValid) {
+          showToast('Pesan berhasil terkirim! Yan akan segera membalas. ✉️');
+          contactForm.reset();
+        }
+      });
+    }
+
+    // ==========================================
+    // JS: SCROLL-DRIVEN ANIMATIONS & REVEAL OBSERVER
+    // ==========================================
+    const revealElements = document.querySelectorAll(
+      '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .scroll-reveal-comic'
+    );
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08
+    });
+
+    revealElements.forEach((el) => {
+      // Check if element is already within viewport on initial load
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 30) {
+        el.classList.add('revealed');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+
+    // ==========================================
+    // JS: SCROLL PROGRESS BAR & NAVBAR ELEVATION
+    // ==========================================
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    const siteHeader = document.querySelector('header');
+
+    let scrollTicking = false;
+
+    function handleScrollUpdates() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const totalDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progressRatio = totalDocHeight > 0 ? Math.min(1, Math.max(0, scrollY / totalDocHeight)) : 0;
+
+      // Update Top Scroll Progress Bar
+      if (scrollProgressBar) {
+        scrollProgressBar.style.transform = `scaleX(${progressRatio})`;
+      }
+
+      // Elevate sticky navbar on scroll down
+      if (siteHeader) {
+        if (scrollY > 15) {
+          siteHeader.classList.add('shadow-sm');
+        } else {
+          siteHeader.classList.remove('shadow-sm');
+        }
+      }
+
+      scrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(handleScrollUpdates);
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial check on page load
+    handleScrollUpdates();
+
+    // ==========================================
+    // JS: BACK TO TOP BUTTON (FOOTER)
+    // ==========================================
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Smooth navigation click
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ==========================================
+    // JS: ACTIVE NAVBAR SECTION OBSERVER
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            if (link.getAttribute('data-section') === currentId) {
+              link.classList.add('text-neutral-900', 'dark:text-white', 'font-bold');
+              link.classList.remove('text-neutral-600', 'dark:text-neutral-400');
+            } else {
+              link.classList.remove('text-neutral-900', 'dark:text-white', 'font-bold');
+              link.classList.add('text-neutral-600', 'dark:text-neutral-400');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((sec) => sectionObserver.observe(sec));
+
+    // ==========================================
+    // JS: TOAST NOTIFICATION UTILITY
+    // ==========================================
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-semibold px-4 py-3 rounded-xl shadow-xl border border-neutral-800 dark:border-neutral-200 max-w-sm flex items-center justify-between gap-3 transition-all duration-300';
+      toast.innerHTML = `
+        <span>${message}</span>
+        <button type="button" class="text-neutral-400 hover:text-white dark:hover:text-neutral-900 ml-2 cursor-pointer font-bold" onclick="this.parentElement.remove()">✕</button>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.remove();
+        }
+      }, 4000);
+    }
+
+    // ==========================================
+    // JS: SIMPLE MINIMALIST PRELOADER CONTROLLER
+    // ==========================================
+    (function initSimplePreloader() {
+      const preloader = document.getElementById('sitePreloader');
+      if (!preloader) {
+        document.body.classList.add('page-loaded');
+        const card = document.getElementById('avatarCard');
+        if (card) card.classList.add('avatar-ambient-float');
+        return;
+      }
+
+      const progressBar = document.getElementById('preloaderProgressBar');
+      const progressPercent = document.getElementById('preloaderPercentage');
+
+      // Lock scrolling while loading
+      document.body.classList.add('overflow-hidden');
+
+      let isDismissed = false;
+
+      function dismissPreloader() {
+        if (isDismissed) return;
+        isDismissed = true;
+
+        if (progressBar) progressBar.style.width = '100%';
+        if (progressPercent) progressPercent.textContent = '100%';
+
+        // Brief hold at 100% before smooth upward slide curtain reveal
+        setTimeout(() => {
+          preloader.classList.add('preloader-hidden');
+          document.body.classList.remove('overflow-hidden');
+
+          // Trigger page-loaded when curtain is revealing the hero content
+          setTimeout(() => {
+            document.body.classList.add('page-loaded');
+          }, 150);
+
+          setTimeout(() => {
+            if (preloader.parentElement) {
+              preloader.style.display = 'none';
+            }
+          }, 850);
+        }, 280);
+      }
+
+      // Smooth progress animation over ~1800ms for a deliberate, elegant feel
+      const duration = 1800;
+      const startTime = performance.now();
+
+      function animateProgress(now) {
+        if (isDismissed) return;
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Cubic ease-out for a silky, natural deceleration
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const percent = Math.min(Math.round(easeOut * 100), 100);
+
+        if (progressBar) progressBar.style.width = `${percent}%`;
+        if (progressPercent) progressPercent.textContent = `${percent}%`;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateProgress);
+        } else {
+          dismissPreloader();
+        }
+      }
+
+      requestAnimationFrame(animateProgress);
+
+      // Safety timeout: dismiss after 3 seconds under all circumstances
+      setTimeout(() => {
+        if (!isDismissed) {
+          dismissPreloader();
+        }
+      }, 3000);
+    })();
+  </script>
+
+</body>
+</html>

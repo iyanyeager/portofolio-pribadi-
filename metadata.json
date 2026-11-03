@@ -1,0 +1,6 @@
+{
+  "name": "Alex Carter - Comic Neo-Brutalist Portfolio",
+  "description": "An interactive, black-and-white comic and neo-brutalist portfolio website built with pure HTML, Tailwind CSS, and vanilla JavaScript.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
